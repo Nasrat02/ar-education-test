@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational AR Learning Platform</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ar.js@3.4.5/aframe/aframe-ar.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Educational AR Learning</h1>
+            <p>Point your camera at markers to see 3D educational content</p>
+        </header>
+
+        <nav class="lesson-nav">
+            <button class="nav-btn active" onclick="showLesson(1)">Solar System</button>
+            <button class="nav-btn" onclick="showLesson(2)">Anatomy</button>
+            <button class="nav-btn" onclick="showLesson(3)">Geometry</button>
+            <button class="nav-btn" onclick="showLesson(4)">Chemistry</button>
+        </nav>
+
+        <div id="ar-container">
+            <!-- Solar System Lesson -->
+            <a-scene id="lesson1" class="lesson-scene active" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+                <a-marker preset="hiro">
+                    <!-- Sun (yellow sphere) -->
+                    <a-sphere position="0 0 0" radius="1" material="color: #FDB813;" animation="property: rotation; to: 0 360 0; dur: 5000; loop: true;"></a-sphere>
+                    
+                    <!-- Mercury -->
+                    <a-sphere position="2 0 0" radius="0.2" material="color: #8C7853;" animation="property: rotation; to: 0 360 0; dur: 2000; loop: true;"></a-sphere>
+                    
+                    <!-- Venus -->
+                    <a-sphere position="3 0 0" radius="0.35" material="color: #FFC649;" animation="property: rotation; to: 0 360 0; dur: 3000; loop: true;"></a-sphere>
+                    
+                    <!-- Earth -->
+                    <a-sphere position="4.5 0 0" radius="0.4" material="color: #2E8BC0;" animation="property: rotation; to: 0 360 0; dur: 4000; loop: true;"></a-sphere>
+                    
+                    <!-- Mars -->
+                    <a-sphere position="6 0 0" radius="0.3" material="color: #E27B58;" animation="property: rotation; to: 0 360 0; dur: 3500; loop: true;"></a-sphere>
+
+                    <!-- Information text -->
+                    <a-text value="Solar System" position="0 3 -1" align="center" scale="2 2 2" color="white"></a-text>
+                    <a-text value="Hiro Marker" position="0 2.5 -1" align="center" scale="1 1 1" color="yellow"></a-text>
+
+                    <a-camera position="0 0 0"></a-camera>
+                </a-marker>
+                <a-entity camera></a-entity>
+            </a-scene>
+
+            <!-- Anatomy Lesson -->
+            <a-scene id="lesson2" class="lesson-scene" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+                <a-marker preset="hiro">
+                    <!-- Heart structure (simplified) -->
+                    <a-sphere position="0 1 0" radius="0.8" material="color: #E91E63;"></a-sphere>
+                    
+                    <!-- Aorta -->
+                    <a-cylinder position="0 2 0" radius="0.15" height="1" material="color: #C2185B;" rotation="0 0 0"></a-cylinder>
+                    
+                    <!-- Pulmonary arteries -->
+                    <a-cylinder position="-0.5 1.5 0" radius="0.1" height="0.8" material="color: #AD1457;"></a-cylinder>
+                    <a-cylinder position="0.5 1.5 0" radius="0.1" height="0.8" material="color: #AD1457;"></a-cylinder>
+
+                    <!-- Information -->
+                    <a-text value="Human Heart" position="0 3.5 -1" align="center" scale="2 2 2" color="white"></a-text>
+                    <a-text value="Scan Hiro marker" position="0 3 -1" align="center" scale="1 1 1" color="pink"></a-text>
+
+                    <a-camera position="0 0 0"></a-camera>
+                </a-marker>
+                <a-entity camera></a-entity>
+            </a-scene>
+
+            <!-- Geometry Lesson -->
+            <a-scene id="lesson3" class="lesson-scene" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+                <a-marker preset="hiro">
+                    <!-- Pyramid -->
+                    <a-tetrahedron position="-2 1 0" radius="0.8" material="color: #FF5722;" animation="property: rotation; to: 0 360 0; dur: 4000; loop: true;"></a-tetrahedron>
+                    
+                    <!-- Cube -->
+                    <a-box position="0 1 0" width="1.2" height="1.2" depth="1.2" material="color: #2196F3;" animation="property: rotation; to: 360 360 0; dur: 4000; loop: true;"></a-box>
+                    
+                    <!-- Cylinder -->
+                    <a-cylinder position="2 1 0" radius="0.6" height="1.5" material="color: #4CAF50;" animation="property: rotation; to: 0 360 0; dur: 3000; loop: true;"></a-cylinder>
+
+                    <!-- Information -->
+                    <a-text value="3D Geometry Shapes" position="0 3.5 -1" align="center" scale="2 2 2" color="white"></a-text>
+                    <a-text value="Pyramid • Cube • Cylinder" position="0 3 -1" align="center" scale="1 1 1" color="cyan"></a-text>
+
+                    <a-camera position="0 0 0"></a-camera>
+                </a-marker>
+                <a-entity camera></a-entity>
+            </a-scene>
+
+            <!-- Chemistry Lesson -->
+            <a-scene id="lesson4" class="lesson-scene" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+                <a-marker preset="hiro">
+                    <!-- Oxygen atom -->
+                    <a-sphere position="-1.5 1 0" radius="0.6" material="color: #FF6B6B;"></a-sphere>
+                    <a-text value="O" position="-1.5 1 0" align="center" scale="0.5 0.5 0.5" color="white"></a-text>
+                    
+                    <!-- Hydrogen atoms -->
+                    <a-sphere position="0 1.8 0" radius="0.4" material="color: #4ECDC4;"></a-sphere>
+                    <a-text value="H" position="0 1.8 0" align="center" scale="0.4 0.4 0.4" color="white"></a-text>
+                    
+                    <a-sphere position="1.5 1 0" radius="0.4" material="color: #4ECDC4;"></a-sphere>
+                    <a-text value="H" position="1.5 1 0" align="center" scale="0.4 0.4 0.4" color="white"></a-text>
+
+                    <!-- Chemical bonds (lines) -->
+                    <a-cylinder position="-0.75 1.4 0" radius="0.05" height="0.8" material="color: white;"></a-cylinder>
+                    <a-cylinder position="0.75 1.4 0" radius="0.05" height="0.8" material="color: white;"></a-cylinder>
+
+                    <!-- Information -->
+                    <a-text value="Water Molecule (H₂O)" position="0 3.5 -1" align="center" scale="2 2 2" color="white"></a-text>
+                    <a-text value="2 Hydrogen + 1 Oxygen" position="0 3 -1" align="center" scale="1 1 1" color="cyan"></a-text>
+
+                    <a-camera position="0 0 0"></a-camera>
+                </a-marker>
+                <a-entity camera></a-entity>
+            </a-scene>
+        </div>
+
+        <div class="info-section">
+            <h2>How to Use:</h2>
+            <ol>
+                <li>Allow camera access when prompted</li>
+                <li>Print the "Hiro" marker or use a marker image</li>
+                <li>Point your camera at the marker</li>
+                <li>Click different lesson buttons to see various AR content</li>
+                <li>Watch the 3D models rotate and interact!</li>
+            </ol>
+            <p><strong>Get the Hiro marker:</strong> <a href="https://ar-js-org.github.io/AR.js-Docs/" target="_blank">Download AR.js Hiro Marker</a></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
